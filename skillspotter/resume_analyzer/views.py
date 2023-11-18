@@ -91,8 +91,8 @@ def analyze_resume(request):
 
             response2 = openai.Completion.create(
                 engine="text-davinci-003",
-                prompt=f"\n Given a candidate's GitHub profile JSON {git_repo_summary_json} and {resume_summary}, compare the two sources: {git_repo_summary_json}, {resume_summary} and provide tailored insights for recruiters. Highlight any discrepancies, showcase complementary information, and offer insights that recruiters can leverage to make informed decisions. Consider factors such as the candidate's skills, academic background, versatility, achievements, GitHub activity, and any potential for growth. Ensure the insights are presented in a way that facilitates recruiters in assessing the candidate's overall suitability for the position. Also make sure the results are in form of bullet points. ",
-                max_tokens=200,
+                prompt=f"\n Analyzing a candidate's suitability for a specific role requires a comprehensive evaluation of both their GitHub profile JSON, denoted as {git_repo_summary_json}, and their resume summary, represented as {resume_summary}. By juxtaposing the information extracted from these two sources and aligning them with the specified {job_description}, the goal is to furnish recruiters with customized insights. These insights aim to discern the candidate's compatibility with the outlined job requirements, enabling a well-informed assessment of whether the candidate is a suitable fit for the role or not.",
+                max_tokens=350,
             )
 
             ai_summary = response2.choices[0].text.strip()
